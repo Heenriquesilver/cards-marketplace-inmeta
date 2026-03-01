@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Typography, CircularProgress, Box } from "@mui/material";
+import { Typography, CircularProgress, Box, Container } from "@mui/material";
 import { useMarketplaceStore } from "../../store/useMarketPlaceStore";
 import { TradeCard } from "./components/tradeCard";
 
@@ -10,21 +10,24 @@ export const MarketplacePage = () => {
     fetchTrades();
   }, []);
 
+  if (loading)
+    return (
+      <Box display="flex" justifyContent="center" mt={10}>
+        <CircularProgress />
+      </Box>
+    );
+
   return (
-    <Box>
-      <Typography variant="h4" mb={3}>
+    <Container maxWidth="lg">
+      <Typography variant="h4" mb={4}>
         Marketplace de Trocas
       </Typography>
 
-      {loading && <CircularProgress />}
-
-      {!loading && trades.length === 0 && (
-        <Typography>Nenhuma troca disponível.</Typography>
-      )}
-
-      {trades.map((trade) => (
-        <TradeCard key={trade.id} trade={trade} />
-      ))}
-    </Box>
+      <Box display="flex" flexDirection="column" gap={3}>
+        {trades.map((trade) => (
+          <TradeCard key={trade.id} trade={trade} refreshTrades={fetchTrades} />
+        ))}
+      </Box>
+    </Container>
   );
 };

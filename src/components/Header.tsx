@@ -14,7 +14,6 @@ export const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* LOGO */}
         <Typography
           variant="h6"
           component={Link}
@@ -24,9 +23,7 @@ export const Header = () => {
           Cards Marketplace
         </Typography>
 
-        {/* MENU */}
         <Box display="flex" alignItems="center" gap={1}>
-          {/* VISÍVEL PARA TODOS */}
           <Button color="inherit" component={Link} to="/">
             Marketplace
           </Button>
@@ -48,7 +45,6 @@ export const Header = () => {
             </>
           ) : (
             <>
-              {/* ÁREA LOGADA */}
               <Button color="inherit" component={Link} to="/my-cards">
                 Minhas cartas
               </Button>
@@ -57,7 +53,7 @@ export const Header = () => {
                 Adicionar cartas
               </Button>
 
-              <Button color="inherit" component={Link} to="/new-trade">
+              <Button color="inherit" component={Link} to="/create-trade">
                 Nova troca
               </Button>
 

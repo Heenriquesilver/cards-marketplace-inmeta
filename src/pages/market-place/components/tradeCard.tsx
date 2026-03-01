@@ -1,20 +1,54 @@
-import { Box, Card, Typography, Divider } from "@mui/material";
-import Grid from "@mui/material/GridLegacy";
+import {
+  Box,
+  Card,
+  Typography,
+  Divider,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 import type { Trade } from "../../../types/types";
 import { CardItem } from "./cardItem";
+import { deleteTrade } from "../../../services/tradeService";
+import { useAuthStore } from "../../../store/useAuthStore";
 
 interface Props {
   trade: Trade;
+  refreshTrades: () => void;
 }
 
-export const TradeCard = ({ trade }: Props) => {
+export const TradeCard = ({ trade, refreshTrades }: Props) => {
+  const { user } = useAuthStore();
+
+  const isOwner = user?.id === trade.userId;
+
   const offering = trade.tradeCards.filter((c) => c.type === "OFFERING");
   const receiving = trade.tradeCards.filter((c) => c.type === "RECEIVING");
 
   const date = new Date(trade.createdAt).toLocaleDateString("pt-BR");
 
+  const handleDelete = async () => {
+    if (!confirm("Deseja deletar esta troca?")) return;
+
+    await deleteTrade(trade.id);
+    refreshTrades();
+  };
+
   return (
-    <Card sx={{ p: 3, mb: 3 }}>
+    <Card sx={{ p: 3, mb: 3, position: "relative" }}>
+      {isOwner && (
+        <Tooltip title="Deletar trade">
+          <IconButton
+            onClick={handleDelete}
+            color="error"
+            sx={{ position: "absolute", top: 8, right: 8 }}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      )}
+
       <Box mb={2}>
         <Typography fontWeight="bold">{trade.user.name}</Typography>
 
@@ -25,10 +59,10 @@ export const TradeCard = ({ trade }: Props) => {
 
       <Divider sx={{ mb: 2 }} />
 
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+      <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={3}>
+        <Box flex={1}>
           <Typography fontWeight="bold" color="success.main" mb={1}>
-            Oferecendo
+            Oferecer
           </Typography>
 
           <Box display="flex" gap={1} flexWrap="wrap">
@@ -40,11 +74,12 @@ export const TradeCard = ({ trade }: Props) => {
               />
             ))}
           </Box>
-        </Grid>
+        </Box>
 
-        <Grid item xs={12} md={6}>
+        {/* RECEBENDO */}
+        <Box flex={1}>
           <Typography fontWeight="bold" color="primary" mb={1}>
-            Quer receber
+            Receber
           </Typography>
 
           <Box display="flex" gap={1} flexWrap="wrap">
@@ -56,8 +91,8 @@ export const TradeCard = ({ trade }: Props) => {
               />
             ))}
           </Box>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Card>
   );
 };

@@ -1,5 +1,3 @@
-export type TradeCardType = "OFFERING" | "RECEIVING";
-
 export interface Card {
   id: string;
   name: string;
@@ -23,3 +21,12 @@ export interface Trade {
   };
   tradeCards: TradeCard[];
 }
+
+export type TradeCardType = "OFFERING" | "RECEIVING";
+
+export type CreateTradePayload = {
+  cards: {
+    cardId: string;
+    type: TradeCardType;
+  }[];
+};

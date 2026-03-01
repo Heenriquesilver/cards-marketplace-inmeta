@@ -5,6 +5,7 @@ import { LoginPage } from "../pages/login/LoginPage";
 import { RegisterPage } from "../pages/register/RegisterPage";
 import { MyCardsPage } from "../pages/my-cards/MyCardsPage";
 import { AddCardsPage } from "../pages/add-cards/AddCardsPage";
+import { CreateTradePage } from "../pages/create-trade/CreateTradePage";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/add-cards",
         element: <AddCardsPage />,
+      },
+      {
+        path: "/create-trade",
+        element: <CreateTradePage />,
       },
     ],
   },
