@@ -13,12 +13,13 @@ export const MainLayout = () => {
 
   return (
     <>
-      <Box display="flex" flexDirection="column" minHeight="100vh">
+      <Box
+        sx={{
+          width: "100%",
+        }}
+      >
         <Header />
-
-        <Box flex={1}>
-          <Outlet />
-        </Box>
+        <Outlet />
       </Box>
     </>
   );

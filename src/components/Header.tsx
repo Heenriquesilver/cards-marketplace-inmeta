@@ -23,101 +23,102 @@ export const Header = () => {
   };
 
   return (
-    <AppBar position="static" elevation={2}>
-      <Toolbar sx={{ justifyContent: "space-between" }}>
-        {/* LOGO */}
-        <Typography
-          variant="h6"
-          component={Link}
-          to="/"
-          sx={{
-            textDecoration: "none",
-            color: "inherit",
-            fontWeight: "bold",
-            letterSpacing: 0.5,
-          }}
-        >
-          Cards Marketplace
-        </Typography>
+    <Box display="flex" flexDirection="column">
+      <AppBar position="static" elevation={2}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Typography
+            variant="h6"
+            component={Link}
+            to="/"
+            sx={{
+              textDecoration: "none",
+              color: "inherit",
+              fontWeight: "bold",
+              letterSpacing: 0.5,
+            }}
+          >
+            Cards Marketplace
+          </Typography>
 
-        <Box display="flex" alignItems="center" gap={1}>
-          <Button sx={navButtonStyle} color="inherit" component={Link} to="/">
-            Marketplace
-          </Button>
+          <Box display="flex" alignItems="center" gap={1}>
+            <Button sx={navButtonStyle} color="inherit" component={Link} to="/">
+              Marketplace
+            </Button>
 
-          {!user ? (
-            <>
-              <Button
-                sx={navButtonStyle}
-                color="inherit"
-                component={Link}
-                to="/login"
-              >
-                Login
-              </Button>
+            {!user ? (
+              <>
+                <Button
+                  sx={navButtonStyle}
+                  color="inherit"
+                  component={Link}
+                  to="/login"
+                >
+                  Login
+                </Button>
 
-              <Button
-                variant="contained"
-                component={Link}
-                to="/register"
-                sx={{
-                  textTransform: "none",
-                  fontWeight: 600,
-                  borderRadius: 2,
-                  ml: 1,
-                }}
-              >
-                Cadastrar
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button
-                sx={navButtonStyle}
-                color="inherit"
-                component={Link}
-                to="/my-cards"
-              >
-                Minhas cartas
-              </Button>
+                <Button
+                  variant="contained"
+                  component={Link}
+                  to="/register"
+                  sx={{
+                    textTransform: "none",
+                    fontWeight: 600,
+                    borderRadius: 2,
+                    ml: 1,
+                  }}
+                >
+                  Cadastrar
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  sx={navButtonStyle}
+                  color="inherit"
+                  component={Link}
+                  to="/my-cards"
+                >
+                  Minhas cartas
+                </Button>
 
-              <Button
-                sx={navButtonStyle}
-                color="inherit"
-                component={Link}
-                to="/add-cards"
-              >
-                Adicionar cartas
-              </Button>
+                <Button
+                  sx={navButtonStyle}
+                  color="inherit"
+                  component={Link}
+                  to="/add-cards"
+                >
+                  Adicionar cartas
+                </Button>
 
-              <Button
-                sx={navButtonStyle}
-                color="inherit"
-                component={Link}
-                to="/create-trade"
-              >
-                Nova troca
-              </Button>
+                <Button
+                  sx={navButtonStyle}
+                  color="inherit"
+                  component={Link}
+                  to="/create-trade"
+                >
+                  Nova troca
+                </Button>
 
-              <Chip
-                label={user.name}
-                sx={{
-                  ml: 1,
-                  fontWeight: 800,
-                }}
-              />
+                <Chip
+                  label={user.name}
+                  sx={{
+                    ml: 1,
+                    fontWeight: 800,
+                  }}
+                />
 
-              <Button
-                sx={navButtonStyle}
-                color="inherit"
-                onClick={handleLogout}
-              >
-                Sair
-              </Button>
-            </>
-          )}
-        </Box>
-      </Toolbar>
-    </AppBar>
+                <Button
+                  sx={navButtonStyle}
+                  color="inherit"
+                  onClick={handleLogout}
+                >
+                  Sair
+                </Button>
+              </>
+            )}
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };

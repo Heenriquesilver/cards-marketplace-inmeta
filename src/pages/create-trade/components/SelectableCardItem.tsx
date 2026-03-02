@@ -16,6 +16,7 @@ export const SelectableCardItem = ({ imageUrl, selected, onClick }: Props) => (
       cursor: "pointer",
       border: selected ? "3px solid #1976d2" : "1px solid #ddd",
       transition: "0.2s",
+      backgroundColor: "#E3F2FD",
       "&:hover": { transform: "scale(1.05)" },
     }}
   >

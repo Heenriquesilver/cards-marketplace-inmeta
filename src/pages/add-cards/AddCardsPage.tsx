@@ -59,10 +59,6 @@ export const AddCardsPage = () => {
         flex: 1,
         p: 3,
         marginLeft: 2,
-        width: "100%",
-        maxWidth: "100%",
-        overflow: "hidden",
-        boxSizing: "border-box",
       }}
     >
       <Typography variant="h4" mb={3}>

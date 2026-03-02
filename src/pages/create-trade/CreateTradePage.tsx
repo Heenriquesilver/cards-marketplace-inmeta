@@ -5,7 +5,6 @@ import {
   Button,
   CircularProgress,
   Alert,
-  Paper,
   Container,
   IconButton,
 } from "@mui/material";
@@ -129,7 +128,7 @@ export const CreateTradePage = () => {
       <Box
         sx={{
           p: 3,
-          height: 640,
+          height: 650,
           display: "flex",
           flexDirection: "column",
           position: "relative",
