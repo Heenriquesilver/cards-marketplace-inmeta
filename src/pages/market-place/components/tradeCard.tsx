@@ -75,8 +75,6 @@ export const TradeCard = ({ trade, refreshTrades }: Props) => {
             ))}
           </Box>
         </Box>
-
-        {/* RECEBENDO */}
         <Box flex={1}>
           <Typography fontWeight="bold" color="primary" mb={1}>
             Receber

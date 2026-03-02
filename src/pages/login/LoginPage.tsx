@@ -38,30 +38,61 @@ export const LoginPage = () => {
       setAuth(response);
 
       navigate("/");
-    } catch (err) {
+    } catch {
       setError("Email ou senha inválidos");
     }
   };
 
   return (
-    <Box display="flex" justifyContent="center">
-      <Paper sx={{ p: 4, width: 400 }}>
-        <Typography variant="h5" mb={2}>
-          Login
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(135deg, #0f172a, #1e293b)",
+      }}
+    >
+      <Paper
+        elevation={10}
+        sx={{
+          p: 5,
+          width: "100%",
+          maxWidth: 420,
+          borderRadius: 3,
+          backgroundColor: "rgba(255,255,255,0.95)",
+          backdropFilter: "blur(10px)",
+        }}
+      >
+        <Typography variant="h4" fontWeight="bold" textAlign="center" mb={1}>
+          Bem-vindo 👋
         </Typography>
 
-        {error && <Alert severity="error">{error}</Alert>}
+        <Typography
+          variant="body2"
+          textAlign="center"
+          color="text.secondary"
+          mb={3}
+        >
+          Faça login para continuar
+        </Typography>
+
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
 
         <Box
           component="form"
           onSubmit={handleSubmit(onSubmit)}
-          mt={2}
           display="flex"
           flexDirection="column"
           gap={2}
         >
           <TextField
             label="Email"
+            fullWidth
             {...register("email")}
             error={!!errors.email}
             helperText={errors.email?.message}
@@ -70,17 +101,39 @@ export const LoginPage = () => {
           <TextField
             label="Senha"
             type="password"
+            fullWidth
             {...register("password")}
             error={!!errors.password}
             helperText={errors.password?.message}
           />
 
-          <Button type="submit" variant="contained" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            disabled={isSubmitting}
+            sx={{
+              mt: 1,
+              py: 1.4,
+              fontWeight: "bold",
+              borderRadius: 2,
+              textTransform: "none",
+            }}
+          >
             {isSubmitting ? <CircularProgress size={24} /> : "Entrar"}
           </Button>
 
-          <Typography variant="body2">
-            Não tem conta? <Link to="/register">Cadastre-se</Link>
+          <Typography variant="body2" textAlign="center" mt={1}>
+            Não tem conta?{" "}
+            <Link
+              to="/register"
+              style={{
+                textDecoration: "none",
+                fontWeight: "bold",
+              }}
+            >
+              Cadastre-se
+            </Link>
           </Typography>
         </Box>
       </Paper>

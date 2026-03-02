@@ -126,7 +126,7 @@ export const CreateTradePage = () => {
     const totalPages = Math.ceil(cards.length / itemsPerPage);
 
     return (
-      <Paper
+      <Box
         sx={{
           p: 3,
           height: 640,
@@ -214,7 +214,7 @@ export const CreateTradePage = () => {
         >
           <ArrowForwardIos />
         </IconButton>
-      </Paper>
+      </Box>
     );
   };
 
@@ -226,8 +226,17 @@ export const CreateTradePage = () => {
     );
 
   return (
-    <Container maxWidth={false} sx={{ mt: 4, pb: 12 }}>
-      <Box display="flex" justifyContent="space-between" mb={3}>
+    <Container maxWidth={false}>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        mb={3}
+        sx={{
+          flex: 1,
+          marginTop: 3,
+          marginLeft: 2,
+        }}
+      >
         <Typography variant="h4">Solicitar Trade</Typography>
         <Button onClick={() => navigate(-1)}>Voltar</Button>
       </Box>

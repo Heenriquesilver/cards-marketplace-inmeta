@@ -8,7 +8,7 @@ interface Props {
 export const CardItem = ({ name, imageUrl }: Props) => {
   return (
     <Card sx={{ width: 120 }}>
-      <CardMedia component="img" height="160" image={imageUrl} alt={name} />
+      <CardMedia component="img" height="170" image={imageUrl} alt={name} />
 
       <Box p={1}>
         <Typography variant="caption" fontWeight="bold">

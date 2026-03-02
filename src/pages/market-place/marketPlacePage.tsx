@@ -18,7 +18,17 @@ export const MarketplacePage = () => {
     );
 
   return (
-    <Container maxWidth="lg">
+    <Box
+      sx={{
+        flex: 1,
+        p: 3,
+        marginLeft: 2,
+        width: "100%",
+        maxWidth: "100%",
+        overflow: "hidden",
+        boxSizing: "border-box",
+      }}
+    >
       <Typography variant="h4" mb={4}>
         Marketplace de Trocas
       </Typography>
@@ -28,6 +38,6 @@ export const MarketplacePage = () => {
           <TradeCard key={trade.id} trade={trade} refreshTrades={fetchTrades} />
         ))}
       </Box>
-    </Container>
+    </Box>
   );
 };

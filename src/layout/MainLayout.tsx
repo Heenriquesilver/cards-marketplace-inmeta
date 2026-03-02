@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../components/Header";
-import { Container } from "@mui/material";
 import { useEffect } from "react";
+import { Box } from "@mui/material";
 import { useAuthStore } from "../store/useAuthStore";
 
 export const MainLayout = () => {
@@ -13,10 +13,13 @@ export const MainLayout = () => {
 
   return (
     <>
-      <Header />
-      <Container sx={{ mt: 4 }}>
-        <Outlet />
-      </Container>
+      <Box display="flex" flexDirection="column" minHeight="100vh">
+        <Header />
+
+        <Box flex={1}>
+          <Outlet />
+        </Box>
+      </Box>
     </>
   );
 };
