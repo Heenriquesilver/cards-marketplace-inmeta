@@ -8,6 +8,9 @@ import {
   Alert,
   CircularProgress,
 } from "@mui/material";
+import { InputAdornment, IconButton } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type LoginFormData, loginSchema } from "../../schemas/loginSchema";
@@ -20,6 +23,7 @@ export const LoginPage = () => {
   const setAuth = useAuthStore((state) => state.setAuth);
 
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -43,10 +47,14 @@ export const LoginPage = () => {
     }
   };
 
+  const handleTogglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: "calc(100vh - 64px)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -65,7 +73,7 @@ export const LoginPage = () => {
         }}
       >
         <Typography variant="h4" fontWeight="bold" textAlign="center" mb={1}>
-          Bem-vindo 👋
+          Bem-vindo Ao CardsMarketPlace
         </Typography>
 
         <Typography
@@ -100,11 +108,20 @@ export const LoginPage = () => {
 
           <TextField
             label="Senha"
-            type="password"
+            type={showPassword ? "text" : "password"}
             fullWidth
             {...register("password")}
             error={!!errors.password}
             helperText={errors.password?.message}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleTogglePassword} edge="end">
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
 
           <Button

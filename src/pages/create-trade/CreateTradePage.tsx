@@ -237,7 +237,6 @@ export const CreateTradePage = () => {
         }}
       >
         <Typography variant="h4">Solicitar Trade</Typography>
-        <Button onClick={() => navigate(-1)}>Voltar</Button>
       </Box>
 
       {error && <Alert severity="error">{error}</Alert>}

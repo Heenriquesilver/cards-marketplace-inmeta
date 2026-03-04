@@ -17,7 +17,7 @@ export const useCreateTrade = () => {
 
       setSuccess("Troca criada com sucesso 🎉");
     } catch {
-      setError("Erro ao criar troca");
+      setError("Não é possivel trocar a mesma carta.");
     } finally {
       setLoading(false);
     }

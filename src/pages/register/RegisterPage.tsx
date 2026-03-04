@@ -7,7 +7,11 @@ import {
   Paper,
   Alert,
   CircularProgress,
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, Link } from "react-router-dom";
@@ -24,6 +28,7 @@ export const RegisterPage = () => {
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -49,13 +54,42 @@ export const RegisterPage = () => {
     }
   };
 
-  return (
-    <Box display="flex" justifyContent="center">
-      <Paper sx={{ p: 4, width: 400 }}>
-        <Button onClick={() => navigate(-1)}>← Voltar</Button>
+  const handleTogglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
 
-        <Typography variant="h5" mb={2}>
-          Cadastro
+  return (
+    <Box
+      sx={{
+        minHeight: "calc(100vh - 64px)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(135deg, #0f172a, #1e293b)",
+      }}
+    >
+      <Paper
+        elevation={10}
+        sx={{
+          p: 5,
+          width: "100%",
+          maxWidth: 420,
+          borderRadius: 3,
+          backgroundColor: "rgba(255,255,255,0.95)",
+          backdropFilter: "blur(10px)",
+        }}
+      >
+        <Typography variant="h4" fontWeight="bold" textAlign="center" mb={1}>
+          Criar Conta
+        </Typography>
+
+        <Typography
+          variant="body2"
+          textAlign="center"
+          color="text.secondary"
+          mb={3}
+        >
+          Preencha os dados para se cadastrar
         </Typography>
 
         {success && (
@@ -79,6 +113,7 @@ export const RegisterPage = () => {
         >
           <TextField
             label="Nome"
+            fullWidth
             {...register("name")}
             error={!!errors.name}
             helperText={errors.name?.message}
@@ -86,6 +121,7 @@ export const RegisterPage = () => {
 
           <TextField
             label="Email"
+            fullWidth
             {...register("email")}
             error={!!errors.email}
             helperText={errors.email?.message}
@@ -93,18 +129,53 @@ export const RegisterPage = () => {
 
           <TextField
             label="Senha"
-            type="password"
+            type={showPassword ? "text" : "password"}
+            fullWidth
             {...register("password")}
             error={!!errors.password}
             helperText={errors.password?.message}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleTogglePassword}
+                    onMouseDown={(e) => e.preventDefault()}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
 
-          <Button type="submit" variant="contained" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            disabled={isSubmitting}
+            sx={{
+              mt: 1,
+              py: 1.4,
+              fontWeight: "bold",
+              borderRadius: 2,
+              textTransform: "none",
+            }}
+          >
             {isSubmitting ? <CircularProgress size={24} /> : "Cadastrar"}
           </Button>
 
-          <Typography variant="body2">
-            Já tem conta? <Link to="/login">Fazer login</Link>
+          <Typography variant="body2" textAlign="center" mt={1}>
+            Já tem conta?{" "}
+            <Link
+              to="/login"
+              style={{
+                textDecoration: "none",
+                fontWeight: "bold",
+              }}
+            >
+              Fazer login
+            </Link>
           </Typography>
         </Box>
       </Paper>

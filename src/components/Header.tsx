@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Typography, Button, Box, Chip } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export const Header = () => {
   const { user, logout } = useAuthStore();
@@ -19,6 +20,7 @@ export const Header = () => {
     transition: "0.2s",
     "&:hover": {
       backgroundColor: "rgba(255,255,255,0.12)",
+      color: "black",
     },
   };
 
@@ -30,12 +32,8 @@ export const Header = () => {
             variant="h6"
             component={Link}
             to="/"
-            sx={{
-              textDecoration: "none",
-              color: "inherit",
-              fontWeight: "bold",
-              letterSpacing: 0.5,
-            }}
+            sx={navButtonStyle}
+            color="inherit"
           >
             Cards Marketplace
           </Typography>
@@ -60,12 +58,7 @@ export const Header = () => {
                   variant="contained"
                   component={Link}
                   to="/register"
-                  sx={{
-                    textTransform: "none",
-                    fontWeight: 600,
-                    borderRadius: 2,
-                    ml: 1,
-                  }}
+                  sx={navButtonStyle}
                 >
                   Cadastrar
                 </Button>
@@ -100,10 +93,13 @@ export const Header = () => {
                 </Button>
 
                 <Chip
-                  label={user.name}
+                  icon={<AccountCircleIcon />}
+                  label={user.name.toUpperCase()}
                   sx={{
-                    ml: 1,
+                    ml: 3,
                     fontWeight: 800,
+                    color: "white",
+                    border: "1px solid rgba(255,255,255,0.3)",
                   }}
                 />
 
