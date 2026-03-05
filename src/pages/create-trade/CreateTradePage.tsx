@@ -52,6 +52,7 @@ export const CreateTradePage = () => {
       setAllCards(all);
       setLoading(false);
     };
+
     fetch();
   }, []);
 
@@ -113,7 +114,7 @@ export const CreateTradePage = () => {
     cards: Card[],
     selected: string[],
     setSelected: React.Dispatch<React.SetStateAction<string[]>>,
-    ref: React.RefObject<HTMLDivElement>,
+    ref: React.RefObject<HTMLDivElement | null>,
     type: "offering" | "receiving",
     canLeft: boolean,
     canRight: boolean,
@@ -223,18 +224,9 @@ export const CreateTradePage = () => {
 
   return (
     <Container maxWidth={false}>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        mb={3}
-        sx={{
-          flex: 1,
-          marginTop: 3,
-          marginLeft: 2,
-        }}
-      >
-        <Typography variant="h4">Solicitar Trade</Typography>
-      </Box>
+      <Typography variant="h4" mt={3} mb={3}>
+        Solicitar Trade
+      </Typography>
 
       {error && <Alert severity="error">{error}</Alert>}
       {success && (
@@ -269,23 +261,12 @@ export const CreateTradePage = () => {
         </Box>
       </Box>
 
-      <Box
-        position="fixed"
-        bottom={0}
-        left={0}
-        width="100%"
-        bgcolor="background.paper"
-        p={2}
-        boxShadow={3}
-        display="flex"
-        justifyContent="flex-end"
-      >
+      <Box textAlign="center" mt={4} mb={6}>
         <Button
           variant="contained"
           size="large"
           disabled={!offering.length || !receiving.length || creating}
           onClick={handleSubmit}
-          sx={{ mr: 3 }}
         >
           {creating ? "Carregando..." : "Confirmar"}
         </Button>
