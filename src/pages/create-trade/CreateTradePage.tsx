@@ -9,7 +9,6 @@ import {
   IconButton,
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
 
 import { getMyCards, getAllCards } from "../../services/cardService";
 import { SelectableCardItem } from "./components/SelectableCardItem";
@@ -57,7 +56,7 @@ export const CreateTradePage = () => {
   }, []);
 
   const updateScroll = (
-    ref: React.RefObject<HTMLDivElement>,
+    ref: React.RefObject<HTMLDivElement | null>,
     type: "offering" | "receiving",
   ) => {
     if (!ref.current) return;
@@ -77,7 +76,7 @@ export const CreateTradePage = () => {
   };
 
   const scroll = (
-    ref: React.RefObject<HTMLDivElement>,
+    ref: React.RefObject<HTMLDivElement | null>,
     dir: "left" | "right",
     type: "offering" | "receiving",
   ) => {
