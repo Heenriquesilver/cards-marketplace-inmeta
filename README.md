@@ -1,73 +1,218 @@
-# React + TypeScript + Vite
+# 🃏 Cards Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketplace de troca de cartas desenvolvido com **React + TypeScript**.
+A aplicação permite que usuários criem contas, adicionem cartas à sua coleção e realizem **propostas de troca com outros usuários**.
 
-Currently, two official plugins are available:
+Este projeto foi desenvolvido como **desafio técnico para vaga de Front-End Pleno**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# 🚀 Demonstração
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Deploy da aplicação:
 
-## Expanding the ESLint configuration
+🔗 https://cards-marketplace-inmeta-qv9l.vercel.app/
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# 🧠 Descrição do Projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+O sistema funciona como um **marketplace de troca de cartas**, onde:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Usuários possuem uma coleção de cartas
+* Podem visualizar cartas disponíveis
+* Criam propostas oferecendo suas cartas
+* Selecionam cartas que desejam receber
+
+A interface foi construída focando em:
+
+* Experiência do usuário
+* Organização de código
+* Escalabilidade
+* Separação de responsabilidades
+
+---
+
+# ⚙️ Tecnologias Utilizadas
+
+### Frontend
+
+* **React**
+* **TypeScript**
+* **Vite**
+* **React Router DOM**
+* **Material UI**
+
+### Gerenciamento de Estado
+
+* **Zustand**
+
+### Comunicação com API
+
+* **Axios**
+
+### Outras ferramentas
+
+* **ESLint**
+* **Prettier**
+
+---
+
+# 🧩 Principais Funcionalidades
+
+## 🔐 Autenticação
+
+* Registro de usuário
+* Login
+* Persistência de sessão
+* Controle de rotas autenticadas
+
+---
+
+## 🃏 Gerenciamento de Cartas
+
+O usuário pode:
+
+* Visualizar todas as cartas
+* Adicionar cartas à sua coleção
+* Visualizar cartas que possui
+
+---
+
+## 🔄 Sistema de Trocas
+
+O usuário pode:
+
+* Criar propostas de troca
+* Selecionar cartas para oferecer
+* Selecionar cartas que deseja receber
+
+---
+
+## 🛒 Marketplace
+
+Área onde o usuário pode:
+
+* Visualizar trocas disponíveis
+* Explorar oportunidades de troca
+
+---
+
+# 🧠 Decisões Técnicas
+
+Algumas decisões foram tomadas pensando em **manutenção e escalabilidade** do projeto:
+
+### 📦 Separação de camadas
+
+* **pages** → páginas da aplicação
+* **components** → componentes reutilizáveis
+* **services** → comunicação com API
+* **store** → gerenciamento de estado global
+* **types** → tipagens TypeScript
+
+---
+
+### 🧩 Zustand para estado global
+
+Foi utilizado **Zustand** para manter:
+
+* Usuário autenticado
+* Dados globais da aplicação
+
+Motivos:
+
+* Mais simples que Redux
+* Menos boilerplate
+* Boa performance
+
+---
+
+### ⚡ Vite
+
+Utilizado para:
+
+* Build extremamente rápido
+* Hot reload eficiente
+* Melhor experiência de desenvolvimento
+
+---
+
+# 📦 Instalação do Projeto
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/Heenriquesilver/cards-marketplace-inmeta.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Entre na pasta do projeto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd cards-marketplace-inmeta
 ```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+---
+
+# ▶️ Executando o Projeto
+
+Para rodar o projeto em desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Aplicação disponível em:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🏗️ Build para Produção
+
+Para gerar a build do projeto:
+
+```bash
+npm run build
+```
+
+Para testar a build local:
+
+```bash
+npm run preview
+```
+
+# 🚀 Melhorias Futuras
+
+Possíveis evoluções do projeto:
+
+* 🔎 Busca de cartas
+* 📄 Paginação no marketplace
+* 📱 Melhor responsividade mobile
+* 🔔 Sistema de notificações de troca
+* ⭐ Favoritar cartas
+* 💬 Chat entre usuários para negociação
+
+---
+
+# 👨‍💻 Autor
+
+**Luiz Henrique**
+
+GitHub
+https://github.com/Heenriquesilver
+
+LinkedIn
+https://www.linkedin.com/in/luiz-henrique-59a09613b/
+
+---
+
+
+
+Este projeto foi desenvolvido para **avaliação técnica** 
