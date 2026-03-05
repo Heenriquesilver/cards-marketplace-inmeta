@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Typography, CircularProgress, Box, Container } from "@mui/material";
+import { Typography, CircularProgress, Box } from "@mui/material";
 import { useMarketplaceStore } from "../../store/useMarketPlaceStore";
 import { TradeCard } from "./components/tradeCard";
 

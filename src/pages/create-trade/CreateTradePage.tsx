@@ -22,8 +22,6 @@ const COLUMNS = 4;
 const GAP = 16;
 
 export const CreateTradePage = () => {
-  const navigate = useNavigate();
-
   const offeringRef = useRef<HTMLDivElement>(null);
   const receivingRef = useRef<HTMLDivElement>(null);
 
