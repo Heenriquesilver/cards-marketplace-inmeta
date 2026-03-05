@@ -3,7 +3,7 @@ import { Typography, CircularProgress, Box } from "@mui/material";
 import { useMarketplaceStore } from "../../store/useMarketPlaceStore";
 import { TradeCard } from "./components/tradeCard";
 
-export const MarketplacePage = () => {
+export const MarketPlacePage = () => {
   const { trades, fetchTrades, loading } = useMarketplaceStore();
 
   useEffect(() => {
