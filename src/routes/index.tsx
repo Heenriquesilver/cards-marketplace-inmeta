@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layout/MainLayout";
-import { MarketPlacePage } from "../pages/market-place/MarketPlacePage";
+import { MarketPlacePage } from "../pages/market-place/marketPlacePage";
 import { LoginPage } from "../pages/login/LoginPage";
 import { RegisterPage } from "../pages/register/RegisterPage";
 import { MyCardsPage } from "../pages/my-cards/MyCardsPage";
