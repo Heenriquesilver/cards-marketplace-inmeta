@@ -21,8 +21,8 @@ const COLUMNS = 4;
 const GAP = 16;
 
 export const CreateTradePage = () => {
-  const offeringRef = useRef<HTMLDivElement>(null);
-  const receivingRef = useRef<HTMLDivElement>(null);
+  const offeringRef = useRef<HTMLDivElement | null>(null);
+  const receivingRef = useRef<HTMLDivElement | null>(null);
 
   const [myCards, setMyCards] = useState<Card[]>([]);
   const [allCards, setAllCards] = useState<Card[]>([]);
